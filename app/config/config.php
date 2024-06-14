@@ -1,14 +1,10 @@
 <?php 
-session_start();
+    $server = "localhost";
+    $dataBaseName = "shop";
+    $username = "root";
+    $password = "";
 
-$servername = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_name = "shop";
+    $pdo = new PDO( "mysql:host=$server;dbname=$dataBaseName", $username, $password );
 
-$conn = mysqli_connect($servername, $db_username, $db_password, $db_name);
-
-if (!$conn) {
-    die("Neuspesna konekcija");
-}
+    $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>

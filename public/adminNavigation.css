@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.navigation{
+    margin: 10px auto;
+    width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    color: #201F1F;
+    text-decoration: none;
+}
+
+.admin{
+    font-weight: bold;
+    font-size: 24px;
+    color: red;
+}
+
+.btn{
+    width: 120px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #201F1F;
+}
+
+.btn > a{
+    color: white;
+}

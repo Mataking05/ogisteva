@@ -1,10 +1,7 @@
-<?php
-require_once "app/config/config.php";
-require_once "app/classes/user.php";
+<?php 
+    session_start();
 
-$user = new User();
-$user->logout();
+    session_destroy();
 
-header("Location: index.php");
-exit();
+    header("Location: index.php");
 ?>

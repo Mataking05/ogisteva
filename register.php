@@ -1,35 +1,4 @@
-<?php
-require_once "app/config/config.php"; 
-require_once  "app/classes/user.php";
-$user = new User();
 
-if ($user ->is_logged()) {
-    header("Location: index.php");
-    exit();
-}
-
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-
-    $created = $user->create($name, $username, $email,$password);
-
-    if($created) {
-        $_SESSION['message']['type'] = "success"; // danger ili success
-        $_SESSION['message']['text'] = "Uspesno ste se registrovali!";
-        header("Location: index.php");
-        exit();
-    }else{
-        $_SESSION['message']['type'] = "danger"; // danger ili success
-        $_SESSION['message']['text'] = "Greska";
-        header("Location: index.php");
-        exit();
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container">
-        <form class="forma"action="" method="post">
+        <form class="forma" action="registerAction.php" method="POST">
             <h2>Registracija</h2>
 
             <div class="input-group">
