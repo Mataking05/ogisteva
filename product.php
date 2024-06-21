@@ -13,6 +13,7 @@
 <body>
     <?php
         require_once('inc/userNavigation.php');
+        
         $idUser = $_SESSION['user_id'];
 
         $sql = "SELECT gitara.gitara_id, gitara.ime_gitare, gitara.cena, kategorija.ime
