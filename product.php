@@ -1,38 +1,54 @@
-<?php 
-require_once "inc/header.php";
-require_once "app/classes/Product.php";
-require_once "app/classes/Cart.php";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Store</title>
+    <link rel="stylesheet" href="public/pc-style.css">
+    <link rel="stylesheet" href="public/tablet-style.css">
+    <link rel="stylesheet" href="public/landscape-mobile-style.css">
+    <link rel="stylesheet" href="public/mobile-style.css">
+    <link rel="stylesheet" href="public/nav.css">
+</head>
+<body>
+    <?php
+        require_once('inc/userNavigation.php');
+        $idUser = $_SESSION['user_id'];
 
-$product = new Product();
-$product = $product->read($_GET['product_id']);
+        $sql = "SELECT gitara.gitara_id, gitara.ime_gitare, gitara.cena, kategorija.ime
+                FROM gitara
+                LEFT JOIN kategorija on gitara.kategorija_id = kategorija.kategorija_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $gitare = $stmt -> fetchAll();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $product_id = $product['product_id'];
-
-    $user_id = $_SESSION['user_id'];
-
-    $quantity = $_POST['quantity'];
-
-    $cart = new Cart();
-    $cart->add_to_cart($product_id, $user_id, $quantity);
-
-    header('Location: cart.php');
-    exit();
-}
-
-?>
-<div>
-    <div>
-        <img src="<?= $product['image'];?>">
-    </div>
-    <div>
-        <h2><?= $product['name']; ?></h2>
-        <p>Price: $<?=$product['price'];?></p>
-        <form action="" method="post">
-            <input type="numer" name="quantity">
-            <button type="submit">Add to Cart</button>
-        </form>
-    </div>
-</div>
-
-<?php require_once "inc/footer.php";?>
+        foreach($gitare as $gitara){
+    ?>
+    <section>
+        <img src="public/slike/background.jpg" alt="dasd"  width="100%" height="1000px"/>
+    </section>
+    <section class="products">
+        <div class="product-box">
+            <div class="guitar-id">
+                <h3>Guitar ID</h3>
+                <h3><?php echo $gitara['gitara_id']?></h3>
+            </div>
+            <div class="guitar-id">
+                <h3>Guitar Name</h3>
+                <h3><?php echo $gitara['ime_gitare']?></h3>
+            </div>
+            <div class="guitar-id">
+                <h3>Guitar Price</h3>
+                <h3><?php echo $gitara['cena']?></h3>
+            </div>
+            <div class="guitar-id">
+                <h3>Guitar Type</h3>
+                <h3><?php echo $gitara['ime']?></h3>
+            </div>
+        </div>
+    </section>
+    <?php
+        }
+    ?>
+</body>
+</html>

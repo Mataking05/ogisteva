@@ -33,7 +33,7 @@
             }
 
             if($_SESSION['uloga_id'] == 2) {
-                header('Location: index.php');
+                header('Location: userPanel.php');
                 exit();
             }
         

@@ -1,6 +1,6 @@
 <?php 
-require_once "inc/header.php";
 
+    require_once "inc/userNavigation.php";
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +24,7 @@ require_once "inc/header.php";
 </head>
 <body>
     <!-- meni se nalazi u hederu -->
-    <?php
-        require_once('inc/header.php');
-    ?>
+
     <section class="hero-section">
         <div class="container">
             <h1 class="hero-heading">
